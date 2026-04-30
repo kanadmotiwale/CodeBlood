@@ -2,9 +2,10 @@ import httpx
 import os
 
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 
 async def generate_report(patterns: dict) -> dict:
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+
     if not GROQ_API_KEY:
         return {**patterns, "narrative": _fallback_narrative(patterns)}
 
@@ -18,7 +19,7 @@ Data: {patterns}
             GROQ_API_URL,
             headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
             json={
-                "model": "llama3-8b-8192",
+                "model": "llama-3.3-70b-versatile",
                 "messages": [{"role": "user", "content": prompt}],
                 "max_tokens": 200
             },
@@ -27,6 +28,7 @@ Data: {patterns}
         if resp.status_code == 200:
             narrative = resp.json()["choices"][0]["message"]["content"]
         else:
+            print("Groq API error:", resp.status_code, resp.text)
             narrative = _fallback_narrative(patterns)
 
     return {**patterns, "narrative": narrative}
