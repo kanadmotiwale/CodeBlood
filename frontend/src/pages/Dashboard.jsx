@@ -9,13 +9,12 @@ const stripEmoji = str => str?.replace(/[\u{1F000}-\u{1FFFF}]|[\u{2600}-\u{27FF}
 export default function Dashboard({ report, onReset }) {
   return (
     <div style={s.root}>
-      <div style={s.grid} />
       <header style={s.header}>
         <span style={s.logo}>CODEBLOOD</span>
         <div style={s.headerRight}>
           <span style={s.tag}>ANALYSIS COMPLETE</span>
           <button onClick={onReset} style={s.resetBtn}
-            onMouseEnter={e => e.target.style.color = "#d08ef5"}
+            onMouseEnter={e => e.target.style.color = "#a855f7"}
             onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.4)"}>
             NEW ANALYSIS →
           </button>
@@ -28,7 +27,7 @@ export default function Dashboard({ report, onReset }) {
         </div>
         <div style={s.midRow}>
           <ProductivityScore report={report} />
-          <HourlyChart peakHour={report.peak_hour} totalCommits={report.total_commits} />
+          <HourlyChart peakHour={report.peak_hour} />
         </div>
         <CommitTypeChart distribution={report.type_distribution} total={report.total_commits} />
         {report.narrative && (
@@ -42,22 +41,17 @@ export default function Dashboard({ report, onReset }) {
   )
 }
 
-const ACCENT = "#d08ef5"
-const BG = "#0e0018"
-const BORDER = "rgba(208,142,245,0.15)"
-
 const s = {
-  root: { minHeight: "100vh", background: BG, color: "#f0f0f0", fontFamily: "'DM Mono','Courier New',monospace", position: "relative" },
-  grid: { position: "fixed", inset: 0, backgroundImage: `linear-gradient(rgba(208,142,245,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(208,142,245,0.03) 1px,transparent 1px)`, backgroundSize: "60px 60px", pointerEvents: "none", zIndex: 0 },
-  header: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "24px 48px", borderBottom: BORDER, position: "sticky", top: 0, background: `rgba(14,0,24,0.95)`, backdropFilter: "blur(12px)", zIndex: 10 },
-  logo: { fontSize: "13px", fontWeight: "700", letterSpacing: "0.2em", color: ACCENT },
+  root: { minHeight: "100vh", background: "#0f0f0f", color: "#ffffff", fontFamily: "'DM Mono','Courier New',monospace" },
+  header: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 48px", borderBottom: "1px solid rgba(255,255,255,0.08)", position: "sticky", top: 0, background: "rgba(15,15,15,0.97)", backdropFilter: "blur(12px)", zIndex: 10 },
+  logo: { fontSize: "13px", fontWeight: "700", letterSpacing: "0.2em", color: "#a855f7" },
   headerRight: { display: "flex", alignItems: "center", gap: "32px" },
-  tag: { fontSize: "10px", letterSpacing: "0.2em", color: "rgba(208,142,245,0.5)" },
+  tag: { fontSize: "10px", letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)" },
   resetBtn: { background: "none", border: "none", color: "rgba(255,255,255,0.4)", fontSize: "11px", letterSpacing: "0.15em", cursor: "pointer", fontFamily: "inherit", transition: "color 0.2s", padding: 0 },
-  main: { maxWidth: "1100px", margin: "0 auto", padding: "48px", position: "relative", zIndex: 1, display: "flex", flexDirection: "column", gap: "24px" },
-  topRow: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px", alignItems: "start" },
-  midRow: { display: "grid", gridTemplateColumns: "1fr 2fr", gap: "24px", alignItems: "start" },
-  narrative: { border: BORDER, borderRadius: "8px", padding: "32px", background: "rgba(208,142,245,0.04)" },
-  narrativeLabel: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(208,142,245,0.6)", marginBottom: "16px" },
+  main: { maxWidth: "1100px", margin: "0 auto", padding: "40px 48px", display: "flex", flexDirection: "column", gap: "20px" },
+  topRow: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", alignItems: "start" },
+  midRow: { display: "grid", gridTemplateColumns: "1fr 2fr", gap: "20px", alignItems: "start" },
+  narrative: { border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "32px", background: "rgba(255,255,255,0.02)" },
+  narrativeLabel: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(168,85,247,0.8)", marginBottom: "16px" },
   narrativeText: { fontSize: "14px", lineHeight: "1.9", color: "rgba(255,255,255,0.75)", margin: 0, fontFamily: "'DM Mono','Courier New',monospace", fontStyle: "normal", fontWeight: "400" },
 }

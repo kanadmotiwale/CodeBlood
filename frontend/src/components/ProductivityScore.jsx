@@ -2,7 +2,6 @@ export default function ProductivityScore({ report }) {
     const { total_commits = 0, vague_commit_pct = 0, panic_commits = 0, longest_streak_days = 0, conflict_signals = 0, type_distribution = {} } = report
     const featureRatio = (type_distribution.feature || 0) / Math.max(total_commits, 1)
     const bugRatio = (type_distribution.bug_fix || 0) / Math.max(total_commits, 1)
-  
     let score = 50
     score += Math.min(featureRatio * 40, 20)
     score -= Math.min(bugRatio * 40, 20)
@@ -11,17 +10,14 @@ export default function ProductivityScore({ report }) {
     score += Math.min(longest_streak_days * 1.5, 15)
     score -= Math.min(conflict_signals * 2, 10)
     score = Math.max(0, Math.min(100, Math.round(score)))
-  
     const grade = score >= 85 ? "A" : score >= 70 ? "B" : score >= 55 ? "C" : score >= 40 ? "D" : "F"
-    const gradeColor = score >= 70 ? "#d08ef5" : score >= 50 ? "#a78bfa" : "#ff6b6b"
-  
+    const gradeColor = score >= 70 ? "#a855f7" : score >= 50 ? "#f59e0b" : "#f87171"
     const factors = [
       { label: "Feature ratio", value: `${Math.round(featureRatio * 100)}%`, positive: featureRatio > 0.3 },
       { label: "Bug fix rate", value: `${Math.round(bugRatio * 100)}%`, positive: bugRatio < 0.3 },
       { label: "Message clarity", value: `${100 - vague_commit_pct}%`, positive: vague_commit_pct < 30 },
       { label: "Consistency", value: `${longest_streak_days}d streak`, positive: longest_streak_days > 3 },
     ]
-  
     return (
       <div style={s.card}>
         <div style={s.topLine}>
@@ -38,9 +34,9 @@ export default function ProductivityScore({ report }) {
         <div style={s.factors}>
           {factors.map(f => (
             <div key={f.label} style={s.factor}>
-              <div style={{ ...s.factorDot, background: f.positive ? "#d08ef5" : "#ff6b6b" }} />
+              <div style={{ ...s.factorDot, background: f.positive ? "#a855f7" : "#f87171" }} />
               <span style={s.factorLabel}>{f.label}</span>
-              <span style={{ ...s.factorValue, color: f.positive ? "#f0f0f0" : "#ff6b6b" }}>{f.value}</span>
+              <span style={{ ...s.factorValue, color: f.positive ? "#ffffff" : "#f87171" }}>{f.value}</span>
             </div>
           ))}
         </div>
@@ -49,19 +45,19 @@ export default function ProductivityScore({ report }) {
   }
   
   const s = {
-    card: { border: "1px solid rgba(208,142,245,0.15)", borderRadius: "8px", padding: "28px", background: "rgba(208,142,245,0.03)" },
-    topLine: { display: "flex", justifyContent: "space-between", marginBottom: "24px" },
-    label: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(208,142,245,0.6)" },
-    index: { fontSize: "11px", color: "rgba(208,142,245,0.25)", letterSpacing: "0.1em" },
-    scoreRow: { display: "flex", alignItems: "flex-end", gap: "16px", marginBottom: "16px" },
-    grade: { fontSize: "56px", fontFamily: "'DM Serif Display',Georgia,serif", fontStyle: "normal", lineHeight: "1", fontWeight: "400" },
-    scoreNum: { fontSize: "28px", fontWeight: "600", color: "#f0f0f0", paddingBottom: "6px" },
-    scoreMax: { fontSize: "14px", color: "rgba(255,255,255,0.3)", fontWeight: "400" },
-    scoreBar: { height: "3px", background: "rgba(208,142,245,0.15)", borderRadius: "2px", overflow: "hidden", marginBottom: "24px" },
+    card: { border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "24px", background: "rgba(255,255,255,0.02)" },
+    topLine: { display: "flex", justifyContent: "space-between", marginBottom: "20px" },
+    label: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(168,85,247,0.8)" },
+    index: { fontSize: "11px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.1em" },
+    scoreRow: { display: "flex", alignItems: "flex-end", gap: "14px", marginBottom: "14px" },
+    grade: { fontSize: "52px", fontFamily: "'DM Serif Display',Georgia,serif", fontStyle: "normal", lineHeight: "1", fontWeight: "400" },
+    scoreNum: { fontSize: "26px", fontWeight: "600", color: "#ffffff", paddingBottom: "5px" },
+    scoreMax: { fontSize: "13px", color: "rgba(255,255,255,0.3)", fontWeight: "400" },
+    scoreBar: { height: "3px", background: "rgba(255,255,255,0.08)", borderRadius: "2px", overflow: "hidden", marginBottom: "20px" },
     scoreBarFill: { height: "100%", borderRadius: "2px" },
     factors: { display: "flex", flexDirection: "column", gap: "10px" },
     factor: { display: "flex", alignItems: "center", gap: "10px" },
     factorDot: { width: "6px", height: "6px", borderRadius: "50%", flexShrink: 0 },
-    factorLabel: { fontSize: "11px", color: "rgba(255,255,255,0.35)", flex: 1 },
+    factorLabel: { fontSize: "11px", color: "rgba(255,255,255,0.45)", flex: 1 },
     factorValue: { fontSize: "12px", fontWeight: "600" },
   }

@@ -36,14 +36,14 @@ export default function StatsGrid({ report }) {
 }
 
 const s = {
-  wrap: { display: "flex", flexDirection: "column", gap: "24px" },
-  block: { border: "1px solid rgba(208,142,245,0.15)", borderRadius: "8px", padding: "28px", background: "rgba(208,142,245,0.03)" },
-  topLine: { display: "flex", justifyContent: "space-between", marginBottom: "20px" },
-  label: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(208,142,245,0.6)" },
-  index: { fontSize: "11px", color: "rgba(208,142,245,0.25)", letterSpacing: "0.1em" },
+  wrap: { display: "flex", flexDirection: "column", gap: "20px" },
+  block: { border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "24px", background: "rgba(255,255,255,0.02)" },
+  topLine: { display: "flex", justifyContent: "space-between", marginBottom: "16px" },
+  label: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(168,85,247,0.8)" },
+  index: { fontSize: "11px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.1em" },
   items: { display: "flex", flexDirection: "column" },
-  item: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 0", borderBottom: "1px solid rgba(208,142,245,0.08)" },
-  itemName: { fontSize: "12px", color: "rgba(255,255,255,0.4)", letterSpacing: "0.05em" },
-  itemValue: { fontSize: "14px", fontWeight: "600", color: "#f0f0f0" },
-  warn: { color: "#ff6b6b" },
+  item: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "11px 0", borderBottom: "1px solid rgba(255,255,255,0.06)" },
+  itemName: { fontSize: "12px", color: "rgba(255,255,255,0.5)", letterSpacing: "0.03em" },
+  itemValue: { fontSize: "14px", fontWeight: "600", color: "#ffffff" },
+  warn: { color: "#f87171" },
 }

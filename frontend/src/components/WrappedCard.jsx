@@ -31,15 +31,15 @@ export default function WrappedCard({ report }) {
 }
 
 const s = {
-  card: { border: "1px solid rgba(208,142,245,0.3)", borderRadius: "8px", padding: "32px", background: "rgba(208,142,245,0.05)" },
-  topLine: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" },
-  label: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(208,142,245,0.6)" },
-  index: { fontSize: "11px", color: "rgba(208,142,245,0.4)", letterSpacing: "0.1em" },
-  archetypeName: { fontSize: "clamp(28px,3vw,40px)", fontFamily: "'DM Serif Display',Georgia,serif", fontWeight: "400", fontStyle: "normal", color: "#d08ef5", lineHeight: "1.1", marginBottom: "12px" },
-  desc: { fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: "1.6", margin: "0 0 24px 0", fontStyle: "normal" },
-  divider: { height: "1px", background: "rgba(208,142,245,0.15)", marginBottom: "24px" },
-  metricsGrid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" },
+  card: { border: "1px solid rgba(168,85,247,0.3)", borderRadius: "8px", padding: "28px", background: "rgba(168,85,247,0.05)" },
+  topLine: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" },
+  label: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(168,85,247,0.8)" },
+  index: { fontSize: "11px", color: "rgba(168,85,247,0.4)", letterSpacing: "0.1em" },
+  archetypeName: { fontSize: "clamp(26px,3vw,38px)", fontFamily: "'DM Serif Display',Georgia,serif", fontWeight: "400", fontStyle: "normal", color: "#ffffff", lineHeight: "1.1", marginBottom: "10px" },
+  desc: { fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: "1.6", margin: "0 0 20px 0", fontStyle: "normal" },
+  divider: { height: "1px", background: "rgba(255,255,255,0.08)", marginBottom: "20px" },
+  metricsGrid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" },
   metric: { display: "flex", flexDirection: "column", gap: "4px" },
-  metricLabel: { fontSize: "9px", letterSpacing: "0.2em", color: "rgba(255,255,255,0.25)" },
-  metricValue: { fontSize: "18px", fontWeight: "600", color: "#f0f0f0", letterSpacing: "0.02em" },
+  metricLabel: { fontSize: "9px", letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)" },
+  metricValue: { fontSize: "17px", fontWeight: "600", color: "#ffffff" },
 }
