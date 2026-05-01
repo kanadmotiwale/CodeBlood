@@ -60,7 +60,7 @@ export default function LandingPage({ onAnalyze }) {
           </div>
           <p style={s.loadingMsg}>{LOADING_MESSAGES[loadingMsg]}</p>
         </div>
-        <style>{`@keyframes slide { 0%{transform:translateX(-100%)} 50%{transform:translateX(200%)} 100%{transform:translateX(-100%)} }`}</style>
+        <style>{`@keyframes slide{0%{transform:translateX(-100%)}50%{transform:translateX(200%)}100%{transform:translateX(-100%)}}`}</style>
       </div>
     )
   }
@@ -80,8 +80,10 @@ export default function LandingPage({ onAnalyze }) {
             <span style={s.accent}>reveal everything.</span>
           </h1>
           <p style={s.sub}>
-            We analyze your Git history to map behavioral patterns,
-            coding psychology, and work habits. No fluff — just data.
+            Most developers treat their Git history as a log of what they did.
+            CodeBlood treats it as a window into how they think. We analyze commit
+            patterns, message quality, timing, and behavioral signals to build a
+            psychological profile of your engineering habits — no fluff, just data.
           </p>
           <form onSubmit={handleSubmit} style={s.form}>
             <div style={s.inputRow}>
@@ -89,30 +91,35 @@ export default function LandingPage({ onAnalyze }) {
                 <label style={s.label}>GITHUB USERNAME</label>
                 <input type="text" placeholder="e.g. torvalds" value={username}
                   onChange={e => setUsername(e.target.value)} style={s.input}
-                  onFocus={e => e.target.style.borderColor = "#bf5af2"}
-                  onBlur={e => e.target.style.borderColor = "rgba(255,255,255,0.12)"} />
+                  onFocus={e => e.target.style.borderColor = "#d08ef5"}
+                  onBlur={e => e.target.style.borderColor = "rgba(255,255,255,0.15)"} />
               </div>
               <div style={s.inputWrap}>
                 <label style={s.label}>REPOSITORY <span style={s.optional}>(OPTIONAL)</span></label>
-                <input type="text" placeholder="Leave blank to analyze all" value={repo}
+                <input type="text" placeholder="Leave blank to analyze all repos" value={repo}
                   onChange={e => setRepo(e.target.value)} style={s.input}
-                  onFocus={e => e.target.style.borderColor = "#bf5af2"}
-                  onBlur={e => e.target.style.borderColor = "rgba(255,255,255,0.12)"} />
+                  onFocus={e => e.target.style.borderColor = "#d08ef5"}
+                  onBlur={e => e.target.style.borderColor = "rgba(255,255,255,0.15)"} />
               </div>
             </div>
             {error && <p style={s.error}>{error}</p>}
             <button type="submit" style={s.btn}
-              onMouseEnter={e => { e.target.style.background = "#bf5af2"; e.target.style.color = "#0d0010" }}
-              onMouseLeave={e => { e.target.style.background = "transparent"; e.target.style.color = "#bf5af2" }}>
+              onMouseEnter={e => { e.target.style.background = "#d08ef5"; e.target.style.color = "#0e0018" }}
+              onMouseLeave={e => { e.target.style.background = "transparent"; e.target.style.color = "#d08ef5" }}>
               RUN ANALYSIS →
             </button>
           </form>
-          <div style={s.features}>
+
+          <div style={s.divider} />
+
+          <div style={s.featureGrid}>
             {[
-              ["01", "Commit patterns", "Time-of-day and day-of-week behavioral analysis"],
-              ["02", "Behavioral signals", "Panic, vagueness, and streak detection"],
-              ["03", "Productivity score", "A–F grade based on your commit habits"],
-              ["04", "AI profile", "LLM-generated psychological narrative"],
+              ["01", "Commit pattern analysis", "We map your commit frequency, timing, and day-of-week trends. See exactly when you code best and worst — and what that says about your workflow."],
+              ["02", "Behavioral signal detection", "We detect panic commits, vague messages, long dry spells, and burst patterns. Each signal adds to your behavioral fingerprint."],
+              ["03", "Productivity scoring", "Your commits are graded A–F using a multi-factor model — feature ratio, bug fix rate, message clarity, streak length, and conflict signals."],
+              ["04", "Developer archetype", "We classify you into one of six archetypes based on your behavioral signals — from Midnight Firefighter to Steady Builder."],
+              ["05", "AI behavioral profile", "A Groq-powered LLM reads your pattern data and writes a personalized psychological profile of how you actually work."],
+              ["06", "Hourly activity map", "We visualize your coding activity across all 24 hours, highlighting your peak hour and estimated productivity curve."],
             ].map(([num, title, desc]) => (
               <div key={num} style={s.featureCard}>
                 <div style={s.featureNum}>{num}</div>
@@ -126,7 +133,7 @@ export default function LandingPage({ onAnalyze }) {
       <footer style={s.footer}>
         <span>Works on any public GitHub profile</span>
         <span style={s.fdiv}>—</span>
-        <span>No account needed</span>
+        <span>No account or signup required</span>
         <span style={s.fdiv}>—</span>
         <span>Free forever</span>
       </footer>
@@ -134,36 +141,41 @@ export default function LandingPage({ onAnalyze }) {
   )
 }
 
+const ACCENT = "#d08ef5"
+const BG = "#0e0018"
+const BORDER = `rgba(208,142,245,0.15)`
+
 const s = {
-  root: { minHeight: "100vh", background: "#0d0010", color: "#f0f0f0", fontFamily: "'DM Mono','Courier New',monospace", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" },
-  grid: { position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(191,90,242,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(191,90,242,0.04) 1px,transparent 1px)", backgroundSize: "60px 60px", pointerEvents: "none" },
-  header: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "28px 48px", borderBottom: "1px solid rgba(191,90,242,0.12)", position: "relative", zIndex: 1 },
-  logo: { fontSize: "13px", fontWeight: "700", letterSpacing: "0.2em", color: "#bf5af2" },
+  root: { minHeight: "100vh", background: BG, color: "#f0f0f0", fontFamily: "'DM Mono','Courier New',monospace", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column" },
+  grid: { position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(208,142,245,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(208,142,245,0.04) 1px,transparent 1px)`, backgroundSize: "60px 60px", pointerEvents: "none" },
+  header: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "28px 48px", borderBottom: `1px solid ${BORDER}`, position: "relative", zIndex: 1 },
+  logo: { fontSize: "13px", fontWeight: "700", letterSpacing: "0.2em", color: ACCENT },
   version: { fontSize: "11px", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" },
   main: { flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: "60px 48px", position: "relative", zIndex: 1 },
-  center: { width: "100%", maxWidth: "800px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" },
-  eyebrow: { fontSize: "11px", letterSpacing: "0.25em", color: "rgba(191,90,242,0.6)", marginBottom: "24px" },
-  headline: { fontSize: "clamp(42px,6vw,72px)", fontFamily: "'DM Serif Display',Georgia,serif", fontWeight: "400", lineHeight: "1.05", margin: "0 0 24px 0", color: "#f0f0f0" },
-  accent: { color: "#bf5af2", fontStyle: "italic" },
-  sub: { fontSize: "15px", lineHeight: "1.7", color: "rgba(255,255,255,0.45)", maxWidth: "480px", margin: "0 0 40px 0" },
-  form: { display: "flex", flexDirection: "column", gap: "16px", width: "100%", maxWidth: "600px", alignItems: "center" },
+  center: { width: "100%", maxWidth: "900px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" },
+  eyebrow: { fontSize: "11px", letterSpacing: "0.25em", color: `rgba(208,142,245,0.7)`, marginBottom: "24px" },
+  headline: { fontSize: "clamp(42px,6vw,72px)", fontFamily: "'DM Serif Display',Georgia,serif", fontWeight: "400", fontStyle: "normal", lineHeight: "1.05", margin: "0 0 24px 0", color: "#f0f0f0" },
+  accent: { color: ACCENT, fontStyle: "normal" },
+  sub: { fontSize: "14px", lineHeight: "1.8", color: "rgba(255,255,255,0.55)", maxWidth: "580px", margin: "0 0 40px 0" },
+  form: { display: "flex", flexDirection: "column", gap: "16px", width: "100%", maxWidth: "620px", alignItems: "center" },
   inputRow: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", width: "100%" },
   inputWrap: { display: "flex", flexDirection: "column", gap: "8px", textAlign: "left" },
-  label: { fontSize: "10px", letterSpacing: "0.2em", color: "rgba(255,255,255,0.3)" },
-  optional: { color: "rgba(255,255,255,0.15)" },
-  input: { background: "rgba(191,90,242,0.05)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "4px", padding: "14px 16px", color: "#f0f0f0", fontSize: "14px", fontFamily: "inherit", outline: "none", transition: "border-color 0.2s", width: "100%", boxSizing: "border-box" },
+  label: { fontSize: "10px", letterSpacing: "0.2em", color: "rgba(255,255,255,0.35)" },
+  optional: { color: "rgba(255,255,255,0.2)" },
+  input: { background: "rgba(208,142,245,0.06)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "4px", padding: "14px 16px", color: "#f0f0f0", fontSize: "14px", fontFamily: "inherit", outline: "none", transition: "border-color 0.2s", width: "100%", boxSizing: "border-box" },
   error: { color: "#ff6b6b", fontSize: "12px", letterSpacing: "0.05em" },
-  btn: { background: "transparent", border: "1px solid #bf5af2", color: "#bf5af2", padding: "16px 48px", fontSize: "12px", fontFamily: "inherit", letterSpacing: "0.15em", fontWeight: "700", cursor: "pointer", borderRadius: "4px", transition: "all 0.2s", marginTop: "8px" },
-  features: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginTop: "64px", width: "100%", textAlign: "left" },
-  featureCard: { border: "1px solid rgba(191,90,242,0.15)", borderRadius: "8px", padding: "20px", background: "rgba(191,90,242,0.04)" },
-  featureNum: { fontSize: "10px", color: "rgba(191,90,242,0.6)", letterSpacing: "0.2em", marginBottom: "8px" },
-  featureTitle: { fontSize: "13px", color: "#f0f0f0", marginBottom: "4px", fontWeight: "500" },
-  featureDesc: { fontSize: "11px", color: "rgba(255,255,255,0.3)", lineHeight: "1.5" },
-  footer: { display: "flex", gap: "16px", padding: "24px 48px", fontSize: "11px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.08em", borderTop: "1px solid rgba(191,90,242,0.1)", position: "relative", zIndex: 1, justifyContent: "center" },
-  fdiv: { color: "rgba(191,90,242,0.2)" },
+  btn: { background: "transparent", border: `1px solid ${ACCENT}`, color: ACCENT, padding: "16px 48px", fontSize: "12px", fontFamily: "inherit", letterSpacing: "0.15em", fontWeight: "700", cursor: "pointer", borderRadius: "4px", transition: "all 0.2s", marginTop: "8px" },
+  divider: { width: "100%", height: "1px", background: BORDER, margin: "56px 0 48px 0" },
+  featureGrid: { display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "20px", width: "100%", textAlign: "left" },
+  featureCard: { border: `1px solid ${BORDER}`, borderRadius: "8px", padding: "24px", background: "rgba(208,142,245,0.04)" },
+  featureNum: { fontSize: "10px", color: `rgba(208,142,245,0.6)`, letterSpacing: "0.2em", marginBottom: "12px" },
+  featureTitle: { fontSize: "13px", color: "#f0f0f0", marginBottom: "10px", fontWeight: "600", lineHeight: "1.4" },
+  featureDesc: { fontSize: "11px", color: "rgba(255,255,255,0.35)", lineHeight: "1.7" },
+  footer: { display: "flex", gap: "16px", padding: "24px 48px", fontSize: "11px", color: "rgba(255,255,255,0.2)", letterSpacing: "0.08em", borderTop: `1px solid ${BORDER}`, position: "relative", zIndex: 1, justifyContent: "center" },
+  fdiv: { color: "rgba(208,142,245,0.2)" },
   loadingScreen: { flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "20px", position: "relative", zIndex: 1 },
   loadingUser: { fontSize: "14px", color: "rgba(255,255,255,0.6)", letterSpacing: "0.1em", margin: 0 },
-  loadingBarTrack: { width: "320px", height: "2px", background: "rgba(191,90,242,0.15)", borderRadius: "2px", overflow: "hidden", position: "relative" },
-  loadingBarFill: { position: "absolute", top: 0, left: 0, height: "100%", width: "40%", background: "#bf5af2", borderRadius: "2px", animation: "slide 1.8s ease-in-out infinite" },
+  loadingBarTrack: { width: "320px", height: "2px", background: "rgba(208,142,245,0.15)", borderRadius: "2px", overflow: "hidden", position: "relative" },
+  loadingBarFill: { position: "absolute", top: 0, left: 0, height: "100%", width: "40%", background: ACCENT, borderRadius: "2px", animation: "slide 1.8s ease-in-out infinite" },
   loadingMsg: { fontSize: "11px", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em", margin: 0 },
 }

@@ -13,7 +13,7 @@ export default function ProductivityScore({ report }) {
     score = Math.max(0, Math.min(100, Math.round(score)))
   
     const grade = score >= 85 ? "A" : score >= 70 ? "B" : score >= 55 ? "C" : score >= 40 ? "D" : "F"
-    const gradeColor = score >= 70 ? "#bf5af2" : score >= 50 ? "#a78bfa" : "#ff6b6b"
+    const gradeColor = score >= 70 ? "#d08ef5" : score >= 50 ? "#a78bfa" : "#ff6b6b"
   
     const factors = [
       { label: "Feature ratio", value: `${Math.round(featureRatio * 100)}%`, positive: featureRatio > 0.3 },
@@ -38,7 +38,7 @@ export default function ProductivityScore({ report }) {
         <div style={s.factors}>
           {factors.map(f => (
             <div key={f.label} style={s.factor}>
-              <div style={{ ...s.factorDot, background: f.positive ? "#bf5af2" : "#ff6b6b" }} />
+              <div style={{ ...s.factorDot, background: f.positive ? "#d08ef5" : "#ff6b6b" }} />
               <span style={s.factorLabel}>{f.label}</span>
               <span style={{ ...s.factorValue, color: f.positive ? "#f0f0f0" : "#ff6b6b" }}>{f.value}</span>
             </div>
@@ -49,15 +49,15 @@ export default function ProductivityScore({ report }) {
   }
   
   const s = {
-    card: { border: "1px solid rgba(191,90,242,0.15)", borderRadius: "8px", padding: "28px", background: "rgba(191,90,242,0.03)" },
+    card: { border: "1px solid rgba(208,142,245,0.15)", borderRadius: "8px", padding: "28px", background: "rgba(208,142,245,0.03)" },
     topLine: { display: "flex", justifyContent: "space-between", marginBottom: "24px" },
-    label: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(191,90,242,0.6)" },
-    index: { fontSize: "11px", color: "rgba(191,90,242,0.25)", letterSpacing: "0.1em" },
+    label: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(208,142,245,0.6)" },
+    index: { fontSize: "11px", color: "rgba(208,142,245,0.25)", letterSpacing: "0.1em" },
     scoreRow: { display: "flex", alignItems: "flex-end", gap: "16px", marginBottom: "16px" },
-    grade: { fontSize: "56px", fontFamily: "'DM Serif Display',Georgia,serif", lineHeight: "1", fontWeight: "400" },
+    grade: { fontSize: "56px", fontFamily: "'DM Serif Display',Georgia,serif", fontStyle: "normal", lineHeight: "1", fontWeight: "400" },
     scoreNum: { fontSize: "28px", fontWeight: "600", color: "#f0f0f0", paddingBottom: "6px" },
     scoreMax: { fontSize: "14px", color: "rgba(255,255,255,0.3)", fontWeight: "400" },
-    scoreBar: { height: "3px", background: "rgba(191,90,242,0.15)", borderRadius: "2px", overflow: "hidden", marginBottom: "24px" },
+    scoreBar: { height: "3px", background: "rgba(208,142,245,0.15)", borderRadius: "2px", overflow: "hidden", marginBottom: "24px" },
     scoreBarFill: { height: "100%", borderRadius: "2px" },
     factors: { display: "flex", flexDirection: "column", gap: "10px" },
     factor: { display: "flex", alignItems: "center", gap: "10px" },

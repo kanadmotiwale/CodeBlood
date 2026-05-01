@@ -1,4 +1,4 @@
-const COLORS = { bug_fix: "#ff6b6b", feature: "#bf5af2", refactor: "#4ecdc4", docs: "#a78bfa", chore: "rgba(255,255,255,0.15)" }
+const COLORS = { bug_fix: "#ff6b6b", feature: "#d08ef5", refactor: "#4ecdc4", docs: "#a78bfa", chore: "rgba(255,255,255,0.15)" }
 const LABELS = { bug_fix: "Bug Fix", feature: "Feature", refactor: "Refactor", docs: "Docs", chore: "Chore" }
 
 export default function CommitTypeChart({ distribution, total }) {
@@ -34,10 +34,10 @@ export default function CommitTypeChart({ distribution, total }) {
 }
 
 const s = {
-  card: { border: "1px solid rgba(191,90,242,0.15)", borderRadius: "8px", padding: "32px", background: "rgba(191,90,242,0.03)" },
+  card: { border: "1px solid rgba(208,142,245,0.15)", borderRadius: "8px", padding: "32px", background: "rgba(208,142,245,0.03)" },
   topLine: { display: "flex", justifyContent: "space-between", marginBottom: "24px" },
-  label: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(191,90,242,0.6)" },
-  index: { fontSize: "11px", color: "rgba(191,90,242,0.25)", letterSpacing: "0.1em" },
+  label: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(208,142,245,0.6)" },
+  index: { fontSize: "11px", color: "rgba(208,142,245,0.25)", letterSpacing: "0.1em" },
   barTrack: { display: "flex", height: "6px", borderRadius: "3px", overflow: "hidden", gap: "2px", marginBottom: "32px" },
   barSegment: { height: "100%", borderRadius: "2px", minWidth: "4px" },
   legend: { display: "flex", flexDirection: "column", gap: "12px" },

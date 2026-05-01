@@ -25,8 +25,8 @@ export default function HourlyChart({ peakHour }) {
             <div style={{
               ...s.bar,
               height: `${Math.max(4, (val / max) * 100)}%`,
-              background: h === peakHour ? "#bf5af2" : "rgba(191,90,242,0.2)",
-              boxShadow: h === peakHour ? "0 0 10px rgba(191,90,242,0.5)" : "none",
+              background: h === peakHour ? "#d08ef5" : "rgba(208,142,245,0.2)",
+              boxShadow: h === peakHour ? "0 0 10px rgba(208,142,245,0.4)" : "none",
             }} />
           </div>
         ))}
@@ -37,22 +37,22 @@ export default function HourlyChart({ peakHour }) {
         ))}
       </div>
       <div style={s.legend}>
-        <div style={s.legendItem}><div style={{ ...s.ldot, background: "#bf5af2" }} /><span>Peak — {fmt(peakHour)}</span></div>
-        <div style={s.legendItem}><div style={{ ...s.ldot, background: "rgba(191,90,242,0.2)" }} /><span>Estimated activity</span></div>
+        <div style={s.legendItem}><div style={{ ...s.ldot, background: "#d08ef5" }} /><span>Peak — {fmt(peakHour)}</span></div>
+        <div style={s.legendItem}><div style={{ ...s.ldot, background: "rgba(208,142,245,0.2)" }} /><span>Estimated activity</span></div>
       </div>
     </div>
   )
 }
 
 const s = {
-  card: { border: "1px solid rgba(191,90,242,0.15)", borderRadius: "8px", padding: "28px", background: "rgba(191,90,242,0.03)" },
+  card: { border: "1px solid rgba(208,142,245,0.15)", borderRadius: "8px", padding: "28px", background: "rgba(208,142,245,0.03)" },
   topLine: { display: "flex", justifyContent: "space-between", marginBottom: "24px" },
-  label: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(191,90,242,0.6)" },
-  index: { fontSize: "11px", color: "rgba(191,90,242,0.25)", letterSpacing: "0.1em" },
+  label: { fontSize: "10px", letterSpacing: "0.25em", color: "rgba(208,142,245,0.6)" },
+  index: { fontSize: "11px", color: "rgba(208,142,245,0.25)", letterSpacing: "0.1em" },
   bars: { display: "flex", alignItems: "flex-end", height: "100px", gap: "3px" },
   barCol: { flex: 1, height: "100%", display: "flex", alignItems: "flex-end" },
   bar: { width: "100%", borderRadius: "2px 2px 0 0", minHeight: "4px" },
-  xAxis: { display: "flex", paddingTop: "8px", borderTop: "1px solid rgba(191,90,242,0.1)", marginTop: "4px" },
+  xAxis: { display: "flex", paddingTop: "8px", borderTop: "1px solid rgba(208,142,245,0.1)", marginTop: "4px" },
   xLabel: { flex: 1, fontSize: "9px", color: "rgba(255,255,255,0.2)", textAlign: "center", letterSpacing: "0.05em" },
   legend: { display: "flex", gap: "24px", marginTop: "16px" },
   legendItem: { display: "flex", alignItems: "center", gap: "8px", fontSize: "10px", color: "rgba(255,255,255,0.3)", letterSpacing: "0.05em" },
