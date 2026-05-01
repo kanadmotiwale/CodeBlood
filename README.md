@@ -26,7 +26,7 @@ Open http://localhost:5173
 - **Frontend**: React + TailwindCSS + Recharts
 - **Backend**: FastAPI (Python)
 - **AI**: Groq API (Llama 3 — free tier)
-- **GitHub Data**: GitHub REST API v3
+- **GitHub Data**: GitHub REST API v3 
 
 ## Features (Phase 1)
 - [x] GitHub commit fetching (public repos, no token needed)
