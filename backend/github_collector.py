@@ -1,9 +1,11 @@
 import httpx
+import os
 from typing import Optional, List
 
 GITHUB_API = "https://api.github.com"
 
 async def fetch_commits(username: str, repo: Optional[str], token: Optional[str]) -> List[dict]:
+    token = token or os.getenv("GITHUB_TOKEN", "")
     headers = {"Accept": "application/vnd.github+json"}
     if token:
         headers["Authorization"] = f"Bearer {token}"
